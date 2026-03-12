@@ -43,6 +43,13 @@ def check_input(input: str) -> float:
     except ValueError:
         raise ValueError("Input type not valid")
 
+def check_operation(operation: str) -> str:
+    operations = ["add", "subtract", "multiply", "divide"]
+    if operation in operations:
+        return operation
+    else:
+        raise ValueError("Invalid operation")
+
 def main():
     
     print(f"===== Simple Calculator =====")
@@ -50,7 +57,7 @@ def main():
     # Ask the user for sample input    
     num1 = check_input(input("Enter the first number: "))
     num2 = check_input(input("Enter the second number: "))
-    operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
+    operation = check_operation(input("Enter the operation (add, subtract, multiply, divide): ").strip().lower())
 
     # Perform the calculation and display the result
     result = simple_calculator(operation, num1, num2)
